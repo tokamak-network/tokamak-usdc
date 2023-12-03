@@ -1,7 +1,7 @@
 import "@typechain/hardhat"
 // import "@nomiclabs/hardhat-waffle"
 import "@nomiclabs/hardhat-etherscan"
-import "@nomiclabs/hardhat-ethers"
+import "@nomicfoundation/hardhat-ethers"
 import "hardhat-gas-reporter"
 import "dotenv/config"
 import "solidity-coverage"
@@ -34,7 +34,7 @@ const config: HardhatUserConfig = {
         },
         sepolia: {
             url: SEPOLIA_RPC_URL,
-            accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+            accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY, `${process.env.PRIVATE_KEY2}`] : [],
             saveDeployments: true,
             chainId: 11155111,
         },

@@ -27,8 +27,13 @@ const deployImplementationAndProxy: DeployFunction = async function (
 ) {
     const { deployments, getNamedAccounts, network, ethers } = hre
     const { deploy, log } = deployments
-    const { deployer } = await getNamedAccounts()
+    const { deployer, player } = await getNamedAccounts()
     const chainId = network.config.chainId!
+    // get second account
+    const secondAccount = (await ethers.getSigners())[1]
+    console.log("Deploying contracts with the account:", deployer)
+    console.log("Second account:", secondAccount.address)
+
 
     const waitBlockConfirmations = chainId === 31337 ? 1 : VERIFICATION_BLOCK_CONFIRMATIONS
     const THROWAWAY_ADDRESS = "0x0000000000000000000000000000000000000001"
@@ -72,7 +77,7 @@ const deployImplementationAndProxy: DeployFunction = async function (
         },
         waitConfirmations: waitBlockConfirmations,
     })
-    fiatTokenImplementationAddress = fiatTokenV2_2.address
+     fiatTokenImplementationAddress = fiatTokenV2_2.address
     console.log("FiatTokenImplementation contract deployed to:", fiatTokenImplementationAddress)
     console.log("Initializing implementation contract with dummy values...")
     // These values are dummy values because we only rely on the implementation
@@ -145,7 +150,7 @@ const deployImplementationAndProxy: DeployFunction = async function (
 
     //Change the Calling Contract Address
     console.log("Initializing proxy contract...")
-    FiatTokenProxyContract = await ethers.getContractAt("FiatTokenV2_2", fiatTokenProxy.address)
+    FiatTokenProxyContract = await ethers.getContractAt("FiatTokenV2_2", fiatTokenProxy.address, secondAccount)
     tx = await FiatTokenProxyContract.initialize(
         tokenName,
         tokenSymbol,
