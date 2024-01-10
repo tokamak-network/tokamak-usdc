@@ -25,7 +25,7 @@ export interface networkConfigInfo {
 /**
  * 
 // TokenName - ERC20 name of the token e.g. "USD Coin"
-TOKEN_NAME: "Bridged USDC Tokamak",
+TOKEN_NAME: "Bridged USDC (Tokamak Network)",
 // TokenSymbol - Symbol of the token e.g. "USDC"
 TOKEN_SYMBOL: "USDC.e",
 // TokenCurrency - Currency of the token e.g. "USD"
