@@ -50,6 +50,11 @@ const deployImplementationAndProxy: DeployFunction = async function (
     let tokenCurrency = networkConfig[chainId]["TOKEN_CURRENCY"]
     let tokenDecimals = networkConfig[chainId]["TOKEN_DECIMALS"]
 
+    if (tokenName == undefined) {
+        console.log("set helper-hardhat-config.ts")
+        return
+    }
+
     console.log(`Proxy Admin:                ${proxyAdminAddress}`)
     console.log(`Owner:                      ${ownerAddress}`)
     console.log(`Pauser:                     ${pauserAddress}`)

@@ -22,6 +22,18 @@ export interface networkConfigInfo {
     [key: number]: networkConfigItem
 }
 
+/**
+ * 
+// TokenName - ERC20 name of the token e.g. "USD Coin"
+TOKEN_NAME: "Bridged USDC Tokamak",
+// TokenSymbol - Symbol of the token e.g. "USDC"
+TOKEN_SYMBOL: "USDC.e",
+// TokenCurrency - Currency of the token e.g. "USD"
+TOKEN_CURRENCY: "USD",
+// TokenDecimals - Number of decimals for the token e.g. 6
+TOKEN_DECIMALS: 6,
+ */
+
 export const networkConfig: networkConfigInfo = {
     31337: {
         name: "localhost",
