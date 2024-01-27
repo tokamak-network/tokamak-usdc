@@ -71,6 +71,11 @@ const config: HardhatUserConfig = {
             // gasMultiplier: 1.25,
             // gasPrice: 10000000000,
         },
+        titansepolia: {
+            url: `${process.env.ETH_NODE_URI_TITAN_SEPOLIA}`,
+            accounts: [`${process.env.PRIVATE_KEY}`],
+            chainId: 111551115050
+          },
     },
     deterministicDeployment: (network: string) => {
         if (network === "31337") {
@@ -90,6 +95,7 @@ const config: HardhatUserConfig = {
             goerli: ETHERSCAN_API_KEY,
             titangoerli: ETHERSCAN_API_KEY,
             holesky: ETHERSCAN_API_KEY,
+            titansepolia:  ETHERSCAN_API_KEY,
         },
         customChains: [
             {
@@ -114,6 +120,14 @@ const config: HardhatUserConfig = {
                 urls: {
                     apiURL: "https://api-holesky.etherscan.io/api",
                     browserURL: "https://holesky.etherscan.io/",
+                },
+            },
+            {
+                network: "titansepolia",
+                chainId: 111551115050,
+                urls: {
+                    apiURL: "https://explorer.titan-sepolia-test.tokamak.network/api",
+                    browserURL: "https://explorer.titan-sepolia-test.tokamak.network",
                 },
             },
         ],
