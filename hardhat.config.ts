@@ -75,6 +75,11 @@ const config: HardhatUserConfig = {
             url: `${process.env.ETH_NODE_URI_TITAN_SEPOLIA}`,
             accounts: [`${process.env.PRIVATE_KEY}`],
             chainId: 111551115050
+        },
+        thanossepolia: {
+            url: `${process.env.ETH_NODE_URI_THANOS_SEPOLIA}`,
+            accounts: [`${process.env.PRIVATE_KEY}`],
+            chainId: 111551118080
           },
     },
     deterministicDeployment: (network: string) => {
@@ -96,8 +101,17 @@ const config: HardhatUserConfig = {
             titangoerli: ETHERSCAN_API_KEY,
             holesky: ETHERSCAN_API_KEY,
             titansepolia:  ETHERSCAN_API_KEY,
+            thanossepolia:  `${process.env.ETHERSCAN_API_KEY}`,
         },
         customChains: [
+            {
+                network: "thanossepolia",
+                chainId: 111551118080,
+                urls: {
+                    apiURL: "https://explorer.thanos-sepolia-test.tokamak.network/api",
+                    browserURL: "https://explorer.thanos-sepolia-test.tokamak.network",
+                },
+            },
             {
                 network: "titangoerli",
                 chainId: 5050,

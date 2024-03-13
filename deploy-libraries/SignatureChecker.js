@@ -1,3 +1,3 @@
 module.exports = {
-    SignatureChecker: "0xe86fCf5213C785AcF9a8BFfEeDEfA9a2199f7Da6",
+    SignatureChecker: "0x2aD53C5501F9688dE51812c9DC3B05B916F81359",
   };
